@@ -1,6 +1,53 @@
 /* UTILITY */
+:root{
+    --darkblue: #222831;
+    --lightblue: #393E46;
+    --acquablue: #00ADB5;
+    --dirtywhite: #EEEEEE;
+}
+
+.debug{
+    border: 1px solid red;
+}
 
 /* MODIFICHE GENERALI */
 body{
     font-family: 'PT Sans', sans-serif;
+    height: 100vh;
+    color: var(--dirtywhite);
+}
+
+header{
+    height: 80px;
+    width: 100%;
+    background-color: var(--darkblue);
+}
+
+footer{
+    height: 50px;
+    width: 100%;
+    background-color: var(--darkblue);
+}
+
+#my-container{
+    height: calc(100vh - 130px);
+    width: 100%;
+    padding-top: 80px;
+    background-color: var();
+    background-color: var(--acquablue);
+}
+
+.contenitore-generale{
+    width: 1200px;
+    margin: 0 auto;
+    height: 80%;
+   
+}
+
+.img-top{
+    height: 70%;
+}
+
+.img-bottom{
+    height: 30%;
 }
