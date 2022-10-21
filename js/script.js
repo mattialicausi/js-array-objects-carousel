@@ -1,18 +1,51 @@
 'use scrict';
 
 /*
-Milestone 0:
-Come sempre focalizziamoci prima sulla creazione del markup statico: costruiamo il container e inseriamo l'immagine grande in modo da poter stilare lo slider.
 Milestone 1:
 Ora rimuoviamo i contenuti statici e usiamo l’array di oggetti letterali per popolare dinamicamente il carosello.
 Al click dell'utente sulle frecce verso sinistra o destra, l'immagine attiva diventerà visibile e dovremo aggiungervi titolo e testo.
 Milestone 2:
 Aggiungere il **ciclo infinito** del carosello. Ovvero se la miniatura attiva è la prima e l'utente clicca la freccia verso destra, la miniatura che deve attivarsi sarà l'ultima e viceversa per l'ultima miniatura se l'utente clicca la freccia verso sinistra.
 */
-
+/*
+<div id="my-container">
+            <div class="contenitore-generale">
+                <div class="img-top">
+                    <img class="img-corrente" src="" alt="">
+                    <div class="testo-luogo">
+                        <h1>INSERIRE TITLE</h1>
+                        <p>INSERIRE DESCRIPTION</p>
+                    </div>
+                </div>
+                <div class="img-bottom">
+                    <div class="row">
+                        <div class="col p-0 pb-0 img-icona">
+                            <img class="img-carosello" src="INSERIRE URL" alt="">
+                            <div class="container-icon container-icon-left">
+                                <i class="fa-solid fa-arrow-left"></i>
+                            </div>
+                        </div>
+                        <div class="col p-0 pb-0"><img class="img-carosello" src="INSERIRE URL" alt=""></div>
+                        <div class="col p-0 pb-0"><img class="img-carosello" src="INSERIRE URL" alt=""></div>
+                        <div class="col p-0 pb-0"><img class="img-carosello" src="INSERIRE URL" alt=""></div>
+                        <div class="col p-0 pb-0 img-icona">
+                            <img class="img-carosello" src="INSERIRE URL" alt="">
+                            <div class="container-icon container-icon-right">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="container-buttons d-flex justify-content-center">
+                    <button type="button" class="btn btn-primary m-2">Inverti l'ordine di scorrimento</button>
+                    <button type="button" class="btn btn-primary m-2">Interrompi lo scorrimento</button>
+                </div>
+            </div>
+        </div>
+*/
 
 //ARRAY IMG
-
 const images = [
     {
         url: 'http://www.viaggiareonline.it/wp-content/uploads/2014/11/sweden_148857365.jpg',
@@ -43,9 +76,75 @@ const images = [
     },
 ];
 
-// funzione per visualizzare valori e indici dell'array in console
+// OGGETTI PRESI DA HTML
+const contenitorePadre = document.getElementById('contenitore-padre');
 
+// TUTTE LE FUNZIONI
+
+// funzione per visualizzare valori e indici dell'array in console
 images.forEach(stampafoto);
-    function stampafoto(valori, index){
-        console.log(valori, index);
+    function stampafoto(valori){
+        //console.log(valori.url);
+        //console.log(valori.title);
+        //console.log(valori.description);
     }
+
+//funzione per ciclare gli elementi dell'array
+//function ciclaArray(){
+    images.forEach(ciclaInfo);
+    function ciclaInfo(valoriInfo){
+        let linkFoto = valoriInfo.url;
+        let titolo = valoriInfo.title;
+        let descrizioneFoto = valoriInfo.description;
+       
+      
+    }
+//}
+
+// funzione per creare layout dimanico
+function creaLayout(){
+    
+    const layoutCreato = `
+    <div id="my-container">
+    <div class="contenitore-generale">
+        <div class="img-top">
+            <img class="img-corrente" src="" alt="">
+            <div class="testo-luogo">
+                <h1>${titolo}</h1>
+                <p>${descrizioneFoto}</p>
+            </div>
+        </div>
+        <div class="img-bottom">
+            <div class="row">
+                <div class="col p-0 pb-0 img-icona">
+                    <img class="img-carosello" src="${linkFoto}" alt="">
+                    <div class="container-icon container-icon-left">
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </div>
+                </div>
+                <div class="col p-0 pb-0"><img class="img-carosello" src="${linkFoto}" alt=""></div>
+                <div class="col p-0 pb-0"><img class="img-carosello" src="${linkFoto}" alt=""></div>
+                <div class="col p-0 pb-0"><img class="img-carosello" src="${linkFoto}" alt=""></div>
+                <div class="col p-0 pb-0 img-icona">
+                    <img class="img-carosello" src="${linkFoto}" alt="">
+                    <div class="container-icon container-icon-right">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="container-buttons d-flex justify-content-center">
+            <button type="button" class="btn btn-primary m-2">Inverti l'ordine di scorrimento</button>
+            <button type="button" class="btn btn-primary m-2">Interrompi lo scorrimento</button>
+        </div>
+    </div>
+</div>
+    `;
+
+    contenitorePadre.append(layoutCreato);
+}
+
+// RICHIAMO FUNZIONI
+creaLayout();
+//ciclaArray()
