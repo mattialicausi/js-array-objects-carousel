@@ -118,23 +118,23 @@ function creaLayout(){
         <div class="img-top">
             <img class="img-corrente" src="" alt="">
             <div class="testo-luogo">
-                <h1>${titolo}</h1>
-                <p>${descrizioneFoto}</p>
+                <h1>${arrayTitle[0]}</h1>
+                <p>${arrayDescription[0]}</p>
             </div>
         </div>
         <div class="img-bottom">
             <div class="row">
                 <div class="col p-0 pb-0 img-icona">
-                    <img class="img-carosello" src="${linkFoto}" alt="">
+                    <img class="img-carosello" src="${arrayUrl[0]}" alt="">
                     <div class="container-icon container-icon-left">
                         <i class="fa-solid fa-arrow-left"></i>
                     </div>
                 </div>
-                <div class="col p-0 pb-0"><img class="img-carosello" src="${linkFoto}" alt=""></div>
-                <div class="col p-0 pb-0"><img class="img-carosello" src="${linkFoto}" alt=""></div>
-                <div class="col p-0 pb-0"><img class="img-carosello" src="${linkFoto}" alt=""></div>
+                <div class="col p-0 pb-0"><img class="img-carosello" src="${arrayUrl[1]}" alt=""></div>
+                <div class="col p-0 pb-0"><img class="img-carosello" src="${arrayUrl[2]}" alt=""></div>
+                <div class="col p-0 pb-0"><img class="img-carosello" src="${arrayUrl[3]}" alt=""></div>
                 <div class="col p-0 pb-0 img-icona">
-                    <img class="img-carosello" src="${linkFoto}" alt="">
+                    <img class="img-carosello" src="${arrayUrl[4]}" alt="">
                     <div class="container-icon container-icon-right">
                         <i class="fa-solid fa-arrow-right"></i>
                     </div>
@@ -155,4 +155,4 @@ function creaLayout(){
 
 // RICHIAMO FUNZIONI
 
-ciclaArray()
+creaLayout();
