@@ -32,7 +32,7 @@ footer{
 #my-container{
     height: calc(100vh - 130px);
     width: 100%;
-    padding-top: 80px;
+    padding-top: 50px;
     background-color: var();
     background-color: var(--acquablue);
 }
@@ -40,8 +40,7 @@ footer{
 .contenitore-generale{
     width: 1200px;
     margin: 0 auto;
-    height: 80%;
-   
+    height: 90%;
 }
 
 .img-top{
@@ -50,4 +49,35 @@ footer{
 
 .img-bottom{
     height: 30%;
+    margin-left: 0.7rem;
+    margin-right: 0.7rem;
+    
+}
+
+/* MODIFICHE IMG */
+
+.img-corrente{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 40% 60%;
+}
+
+.img-carosello{
+    height: 100%;
+    width: 100%;
+}
+
+.img-top{
+    position: relative;
+}
+
+.testo-luogo{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 70%;
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
 }
