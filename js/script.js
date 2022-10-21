@@ -109,8 +109,8 @@ function creaLayout(){
             </div>
         </div>
         <div class="container-buttons d-flex justify-content-center">
-            <button type="button" class="btn btn-primary m-2">Inverti l'ordine di scorrimento</button>
-            <button type="button" class="btn btn-primary m-2">Interrompi lo scorrimento</button>
+            <button id="btn-inverti-ordine" type="button" class="btn btn-primary m-2">Inverti l'ordine di scorrimento</button>
+            <button id="btn-interrompi-scorrimento" type="button" class="btn btn-primary m-2">Interrompi lo scorrimento</button>
         </div>
     </div>
 </div>
@@ -154,12 +154,18 @@ function caroselloImgTop(){
         }
        
     }
-        
 
-   setInterval(cicloTop, 3000);
+    const intervallo = setInterval(cicloTop, 3000);
 
+
+
+// funzione al bottone per fermare lo scorrimento automatico
+    const btnInterrompi = document.getElementById('btn-interrompi-scorrimento');
+    btnInterrompi.addEventListener('click', function(){
+    clearInterval(intervallo);
+})
 }
-
+   
 
 //funzione per creare carosello in img bottom
 function caroselloImgBottom(){
@@ -187,6 +193,8 @@ function caroselloImgBottom(){
         console.log('clicco avanti' + arrayUrl[slider2])
     })
 }
+
+
 
 
 
