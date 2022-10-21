@@ -91,16 +91,16 @@ function creaLayout(){
         <div class="img-bottom">
             <div class="row">
                 <div class="col p-0 pb-0 img-icona">
-                    <img class="img-carosello" src="${arrayUrl[0]}" alt="">
+                    <img class="img-carosello img-opaca" src="${arrayUrl[0]}" alt="">
                     <div class="container-icon container-icon-left">
                         <i class="fa-solid fa-arrow-left"></i>
                     </div>
                 </div>
-                <div class="col p-0 pb-0"><img class="img-carosello" src="${arrayUrl[1]}" alt=""></div>
-                <div class="col p-0 pb-0"><img class="img-carosello" src="${arrayUrl[2]}" alt=""></div>
-                <div class="col p-0 pb-0"><img class="img-carosello" src="${arrayUrl[3]}" alt=""></div>
+                <div class="col p-0 pb-0"><img class="img-carosello img-opaca" src="${arrayUrl[1]}" alt=""></div>
+                <div class="col p-0 pb-0"><img class="img-carosello img-opaca" src="${arrayUrl[2]}" alt=""></div>
+                <div class="col p-0 pb-0"><img class="img-carosello img-opaca" src="${arrayUrl[3]}" alt=""></div>
                 <div class="col p-0 pb-0 img-icona">
-                    <img class="img-carosello" src="${arrayUrl[4]}" alt="">
+                    <img class="img-carosello img-opaca" src="${arrayUrl[4]}" alt="">
                     <div class="container-icon container-icon-right">
                         <i class="fa-solid fa-arrow-right"></i>
                     </div>
@@ -173,25 +173,37 @@ function caroselloImgBottom(){
     const cards = document.querySelectorAll('.img-carosello');
     cards[slider2].classList.toggle('img-opaca');
     const frecciaSinistra = document.querySelector('.container-icon-left');
-    frecciaSinistra.addEventListener('click', function(){
-        if(arrayUrl[slider2] < arrayUrl.length){
+    frecciaSinistra.addEventListener('click', sinistra);
+
+        function sinistra(){
+        if(cards[slider2] < 0){
             cards[slider2].classList.toggle('img-opaca');
-            slider2++;
-        } else{
-            slider2 = 0;
-        }
-        console.log('clicco indietro' + arrayUrl[slider2])
-    })
-    const frecciaDestra = document.querySelector('.container-icon-right');
-    frecciaDestra.addEventListener('click', function(){
-        if(arrayUrl[slider2] >= arrayUrl.length){
+            slider2 += 4;
+            cards[slider2].classList.toggle('img-opaca');
+        } 
+        else{
             cards[slider2].classList.toggle('img-opaca');
             slider2--;
-        } else{
-            slider2 = 4;
+            cards[slider2].classList.toggle('img-opaca');
         }
-        console.log('clicco avanti' + arrayUrl[slider2])
-    })
+        console.log('clicco indietro' + cards[slider2])
+    }
+    const frecciaDestra = document.querySelector('.container-icon-right');
+    frecciaDestra.addEventListener('click', destra);
+
+        function destra(){
+        if(cards[slider2] < 5){
+            cards[slider2].classList.toggle('img-opaca');
+            slider2++;
+            cards[slider2].classList.toggle('img-opaca');
+        } 
+        else{
+            cards[slider2].classList.toggle('img-opaca');
+            slider2 -= 4;
+            cards[slider2].classList.toggle('img-opaca');
+        }
+        console.log('clicco avanti' + cards[slider2])
+    }
 }
 
 
