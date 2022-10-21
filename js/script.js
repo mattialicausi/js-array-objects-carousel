@@ -90,14 +90,14 @@ images.forEach(stampafoto);
     }
 
 //funzione per ciclare gli elementi dell'array
-function ciclaArray(){
-    images.forEach(ciclaInfo);
-    function ciclaInfo(valoriInfo){
-        let linkFoto = valoriInfo.url;
-        let titolo = valoriInfo.title;
-        let descrizioneFoto = valoriInfo.description;
-    }  
-}
+// function ciclaArray(){
+//     images.forEach(ciclaInfo);
+//     function ciclaInfo(valoriInfo){
+//         let linkFoto = valoriInfo.url;
+//         let titolo = valoriInfo.title;
+//         let descrizioneFoto = valoriInfo.description;
+//     }  
+// }
 
 //funzione per ciclare array ed inserire elementi in un nuovo array più specifico
 const arrayUrl = images.map((value) => value.url);
@@ -116,7 +116,7 @@ function creaLayout(){
     <div id="my-container">
     <div class="contenitore-generale">
         <div class="img-top">
-            <img class="img-corrente" src="" alt="">
+            <img class="img-corrente" src="${arrayUrl[0]}" alt="">
             <div class="testo-luogo">
                 <h1>${arrayTitle[0]}</h1>
                 <p>${arrayDescription[0]}</p>
@@ -125,14 +125,14 @@ function creaLayout(){
         <div class="img-bottom">
             <div class="row">
                 <div class="col p-0 pb-0 img-icona">
-                    <img class="img-carosello" src="${arrayUrl[0]}" alt="">
+                    <img class="img-carosello" src="${arrayUrl[1]}" alt="">
                     <div class="container-icon container-icon-left">
                         <i class="fa-solid fa-arrow-left"></i>
                     </div>
                 </div>
-                <div class="col p-0 pb-0"><img class="img-carosello" src="${arrayUrl[1]}" alt=""></div>
                 <div class="col p-0 pb-0"><img class="img-carosello" src="${arrayUrl[2]}" alt=""></div>
                 <div class="col p-0 pb-0"><img class="img-carosello" src="${arrayUrl[3]}" alt=""></div>
+                <div class="col p-0 pb-0"><img class="img-carosello" src="${arrayUrl[4]}" alt=""></div>
                 <div class="col p-0 pb-0 img-icona">
                     <img class="img-carosello" src="${arrayUrl[4]}" alt="">
                     <div class="container-icon container-icon-right">
