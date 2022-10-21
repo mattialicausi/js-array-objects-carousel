@@ -7,43 +7,6 @@ Al click dell'utente sulle frecce verso sinistra o destra, l'immagine attiva div
 Milestone 2:
 Aggiungere il **ciclo infinito** del carosello. Ovvero se la miniatura attiva è la prima e l'utente clicca la freccia verso destra, la miniatura che deve attivarsi sarà l'ultima e viceversa per l'ultima miniatura se l'utente clicca la freccia verso sinistra.
 */
-/*
-<div id="my-container">
-            <div class="contenitore-generale">
-                <div class="img-top">
-                    <img class="img-corrente" src="" alt="">
-                    <div class="testo-luogo">
-                        <h1>INSERIRE TITLE</h1>
-                        <p>INSERIRE DESCRIPTION</p>
-                    </div>
-                </div>
-                <div class="img-bottom">
-                    <div class="row">
-                        <div class="col p-0 pb-0 img-icona">
-                            <img class="img-carosello" src="INSERIRE URL" alt="">
-                            <div class="container-icon container-icon-left">
-                                <i class="fa-solid fa-arrow-left"></i>
-                            </div>
-                        </div>
-                        <div class="col p-0 pb-0"><img class="img-carosello" src="INSERIRE URL" alt=""></div>
-                        <div class="col p-0 pb-0"><img class="img-carosello" src="INSERIRE URL" alt=""></div>
-                        <div class="col p-0 pb-0"><img class="img-carosello" src="INSERIRE URL" alt=""></div>
-                        <div class="col p-0 pb-0 img-icona">
-                            <img class="img-carosello" src="INSERIRE URL" alt="">
-                            <div class="container-icon container-icon-right">
-                                <i class="fa-solid fa-arrow-right"></i>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="container-buttons d-flex justify-content-center">
-                    <button type="button" class="btn btn-primary m-2">Inverti l'ordine di scorrimento</button>
-                    <button type="button" class="btn btn-primary m-2">Interrompi lo scorrimento</button>
-                </div>
-            </div>
-        </div>
-*/
 
 //ARRAY IMG
 const images = [
@@ -89,25 +52,15 @@ images.forEach(stampafoto);
         // console.log(valori.description);
     }
 
-//funzione per ciclare gli elementi dell'array
-// function ciclaArray(){
-//     images.forEach(ciclaInfo);
-//     function ciclaInfo(valoriInfo){
-//         let linkFoto = valoriInfo.url;
-//         let titolo = valoriInfo.title;
-//         let descrizioneFoto = valoriInfo.description;
-//     }  
-// }
-
 //funzione per ciclare array ed inserire elementi in un nuovo array più specifico
 const arrayUrl = images.map((value) => value.url);
-console.log(arrayUrl);
+//console.log(arrayUrl);
 
 const arrayTitle = images.map((value) => value.title);
-console.log(arrayTitle);
+//console.log(arrayTitle);
 
 const arrayDescription = images.map((value) => value.description);
-console.log(arrayDescription);
+//console.log(arrayDescription);
 
 
 // funzione per creare layout dimanico
@@ -117,6 +70,10 @@ function creaLayout(){
     <div class="contenitore-generale">
         <div class="img-top">
             <img class="img-corrente" src="${arrayUrl[0]}" alt="">
+            <img class="img-corrente d-none" src="${arrayUrl[1]}" alt="">
+            <img class="img-corrente d-none" src="${arrayUrl[2]}" alt="">
+            <img class="img-corrente d-none" src="${arrayUrl[3]}" alt="">
+            <img class="img-corrente d-none" src="${arrayUrl[4]}" alt="">
             <div class="testo-luogo">
                 <h1>${arrayTitle[0]}</h1>
                 <p>${arrayDescription[0]}</p>
@@ -125,14 +82,14 @@ function creaLayout(){
         <div class="img-bottom">
             <div class="row">
                 <div class="col p-0 pb-0 img-icona">
-                    <img class="img-carosello" src="${arrayUrl[1]}" alt="">
+                    <img class="img-carosello" src="${arrayUrl[0]}" alt="">
                     <div class="container-icon container-icon-left">
                         <i class="fa-solid fa-arrow-left"></i>
                     </div>
                 </div>
+                <div class="col p-0 pb-0"><img class="img-carosello" src="${arrayUrl[1]}" alt=""></div>
                 <div class="col p-0 pb-0"><img class="img-carosello" src="${arrayUrl[2]}" alt=""></div>
                 <div class="col p-0 pb-0"><img class="img-carosello" src="${arrayUrl[3]}" alt=""></div>
-                <div class="col p-0 pb-0"><img class="img-carosello" src="${arrayUrl[4]}" alt=""></div>
                 <div class="col p-0 pb-0 img-icona">
                     <img class="img-carosello" src="${arrayUrl[4]}" alt="">
                     <div class="container-icon container-icon-right">
@@ -153,6 +110,41 @@ function creaLayout(){
     contenitorePadre.innerHTML = layoutCreato;
 }
 
+//funzione per creare carosello in img bottom
+function caroselloImgBottom(){
+    let slider = 0;
+    const cards = document.querySelectorAll('.img-carosello');
+    cards[slider].classList.toggle('img-opaca');
+    const frecciaSinistra = document.querySelector('.container-icon-left');
+    frecciaSinistra.addEventListener('click', function(){
+        if(arrayUrl[slider] <= arrayUrl.length){
+            cards[slider].classList.toggle('.img-opaca');
+            slider++;
+        } else{
+            slider = 0;
+        }
+    })
+    const frecciaDestra = document.querySelector('.container-icon-right');
+    frecciaDestra.addEventListener('click', function(){
+        if(arrayUrl[slider] <= arrayUrl.length){
+            cards[slider].classList.toggle('.img-opaca');
+            slider--;
+        } else{
+            slider = 4;
+        }
+    })
+}
+
+//funzione per carosello img top
+function caroselloImgTop(){
+    slider= 0;
+    const sfondi = document.querySelectorAll('.img-corrente');
+    sfondi[slider].classList.toggle('.d-none')
+}
+
+setInterval(caroselloImgTop, 3000);
+
 // RICHIAMO FUNZIONI
 
 creaLayout();
+caroselloImgBottom();

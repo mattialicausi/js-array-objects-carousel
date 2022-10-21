@@ -115,3 +115,7 @@ footer{
     transition: 1s linear;
     cursor: pointer;
 }
+
+.img-opaca{
+    opacity: 0.50;
+}
