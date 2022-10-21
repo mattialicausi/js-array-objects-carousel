@@ -69,14 +69,23 @@ function creaLayout(){
     <div id="my-container">
     <div class="contenitore-generale">
         <div class="img-top">
-            <img class="img-corrente" src="${arrayUrl[0]}" alt="">
+            <img class="img-corrente d-none" src="${arrayUrl[0]}" alt="">
             <img class="img-corrente d-none" src="${arrayUrl[1]}" alt="">
             <img class="img-corrente d-none" src="${arrayUrl[2]}" alt="">
             <img class="img-corrente d-none" src="${arrayUrl[3]}" alt="">
             <img class="img-corrente d-none" src="${arrayUrl[4]}" alt="">
             <div class="testo-luogo">
-                <h1>${arrayTitle[0]}</h1>
-                <p>${arrayDescription[0]}</p>
+                <h1 class="titolo-corrente d-none">${arrayTitle[0]}</h1>
+                <h1 class="titolo-corrente d-none">${arrayTitle[1]}</h1>
+                <h1 class="titolo-corrente d-none">${arrayTitle[2]}</h1>
+                <h1 class="titolo-corrente d-none">${arrayTitle[3]}</h1>
+                <h1 class="titolo-corrente d-none">${arrayTitle[4]}</h1>
+
+                <p class="testo-corrente d-none">${arrayDescription[0]}</p>
+                <p class="testo-corrente d-none">${arrayDescription[1]}</p>
+                <p class="testo-corrente d-none">${arrayDescription[2]}</p>
+                <p class="testo-corrente d-none">${arrayDescription[3]}</p>
+                <p class="testo-corrente d-none">${arrayDescription[4]}</p>
             </div>
         </div>
         <div class="img-bottom">
@@ -108,41 +117,78 @@ function creaLayout(){
     `;
 
     contenitorePadre.innerHTML = layoutCreato;
-}
-
-//funzione per creare carosello in img bottom
-function caroselloImgBottom(){
-    let slider = 0;
-    const cards = document.querySelectorAll('.img-carosello');
-    cards[slider].classList.toggle('img-opaca');
-    const frecciaSinistra = document.querySelector('.container-icon-left');
-    frecciaSinistra.addEventListener('click', function(){
-        if(arrayUrl[slider] <= arrayUrl.length){
-            cards[slider].classList.toggle('.img-opaca');
-            slider++;
-        } else{
-            slider = 0;
-        }
-    })
-    const frecciaDestra = document.querySelector('.container-icon-right');
-    frecciaDestra.addEventListener('click', function(){
-        if(arrayUrl[slider] <= arrayUrl.length){
-            cards[slider].classList.toggle('.img-opaca');
-            slider--;
-        } else{
-            slider = 4;
-        }
-    })
+    caroselloImgTop();
 }
 
 //funzione per carosello img top
+// arrayUrl.forEach(caroselloImgTop);
+// arrayTitle.forEach(caroselloImgTop);
+// arrayDescription.forEach(caroselloImgTop);
 function caroselloImgTop(){
-    slider= 0;
-    const sfondi = document.querySelectorAll('.img-corrente');
-    sfondi[slider].classList.toggle('.d-none')
+     let slider = 0;
+    const immagini = document.querySelectorAll('.img-corrente');
+    const titoli = document.querySelectorAll('.titolo-corrente');
+    const testo = document.querySelectorAll('.testo-corrente');
+
+    immagini[slider].classList.toggle('d-none');
+    titoli[slider].classList.toggle('d-none');
+    testo[slider].classList.toggle('d-none');
+
+    function cicloTop(){
+        if(slider < 4){
+             immagini[slider].classList.toggle('d-none');
+            titoli[slider].classList.toggle('d-none');
+            testo[slider].classList.toggle('d-none');
+            slider++;
+            immagini[slider].classList.toggle('d-none');
+            titoli[slider].classList.toggle('d-none');
+            testo[slider].classList.toggle('d-none');
+        } else{
+            immagini[slider].classList.toggle('d-none');
+            titoli[slider].classList.toggle('d-none');
+            testo[slider].classList.toggle('d-none');
+            slider -= 4;
+            immagini[slider].classList.toggle('d-none');
+            titoli[slider].classList.toggle('d-none');
+            testo[slider].classList.toggle('d-none');
+        }
+       
+    }
+        
+
+   setInterval(cicloTop, 3000);
+
 }
 
-setInterval(caroselloImgTop, 3000);
+
+//funzione per creare carosello in img bottom
+function caroselloImgBottom(){
+    let slider2 = 0;
+    const cards = document.querySelectorAll('.img-carosello');
+    cards[slider2].classList.toggle('img-opaca');
+    const frecciaSinistra = document.querySelector('.container-icon-left');
+    frecciaSinistra.addEventListener('click', function(){
+        if(arrayUrl[slider2] < arrayUrl.length){
+            cards[slider2].classList.toggle('img-opaca');
+            slider2++;
+        } else{
+            slider2 = 0;
+        }
+        console.log('clicco indietro' + arrayUrl[slider2])
+    })
+    const frecciaDestra = document.querySelector('.container-icon-right');
+    frecciaDestra.addEventListener('click', function(){
+        if(arrayUrl[slider2] >= arrayUrl.length){
+            cards[slider2].classList.toggle('img-opaca');
+            slider2--;
+        } else{
+            slider2 = 4;
+        }
+        console.log('clicco avanti' + arrayUrl[slider2])
+    })
+}
+
+
 
 // RICHIAMO FUNZIONI
 
