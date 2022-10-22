@@ -160,13 +160,44 @@ function caroselloImgTop(){
 
 
 
+
 // funzione al bottone per fermare lo scorrimento automatico
     const btnInterrompi = document.getElementById('btn-interrompi-scorrimento');
     btnInterrompi.addEventListener('click', function(){
     clearInterval(intervallo);
-})
+    clearInterval(intervallo2);
+
+    })
+
+    //funzione al bottone inverti scorrimento
+    const btnInverti = document.getElementById('btn-inverti-ordine');
+    btnInverti.addEventListener('click', cicloInverso);
+    function cicloInverso(){
+    console.log('click inverso');
+    clearInterval(intervallo);
+    
+        if(slider > 1){
+             immagini[slider].classList.toggle('d-none');
+            titoli[slider].classList.toggle('d-none');
+            testo[slider].classList.toggle('d-none');
+            slider--;
+            immagini[slider].classList.toggle('d-none');
+            titoli[slider].classList.toggle('d-none');
+            testo[slider].classList.toggle('d-none');
+        } else{
+            immagini[slider].classList.toggle('d-none');
+            titoli[slider].classList.toggle('d-none');
+            testo[slider].classList.toggle('d-none');
+            slider += 4;
+            immagini[slider].classList.toggle('d-none');
+            titoli[slider].classList.toggle('d-none');
+            testo[slider].classList.toggle('d-none');
+        }
+    }
+      
+
+
 }
-   
 
 //funzione per creare carosello in img bottom
 function caroselloImgBottom(){
@@ -188,7 +219,7 @@ function caroselloImgBottom(){
                 slider ++;
              cards[slider].classList.toggle('img-opaca');
         }
-        console.log('click a destra')
+        //console.log('click a destra')
     }
 
     const btnSinistra = document.querySelector('.container-icon-left');
@@ -204,9 +235,17 @@ function caroselloImgBottom(){
                 slider --;
             cards[slider].classList.toggle('img-opaca');
         }
-        console.log('click a sinistra')
+        //console.log('click a sinistra')
     }
+    const intervallo2 = setInterval(scorriDestra, 3000);
 
+    // funzione al bottone per fermare lo scorrimento automatico
+    const btnInterrompi = document.getElementById('btn-interrompi-scorrimento');
+    btnInterrompi.addEventListener('click', function(){
+    clearInterval(intervallo2);
+
+    })
+    
 }
 
 // RICHIAMO FUNZIONI
