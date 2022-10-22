@@ -91,7 +91,7 @@ function creaLayout(){
         <div class="img-bottom">
             <div class="row">
                 <div class="col p-0 pb-0 img-icona">
-                    <img class="img-carosello img-opaca" src="${arrayUrl[0]}" alt="">
+                    <img class="img-carosello img-opaca"  src="${arrayUrl[0]}" alt="">
                     <div class="container-icon container-icon-left">
                         <i class="fa-solid fa-arrow-left"></i>
                     </div>
@@ -118,10 +118,11 @@ function creaLayout(){
 
     contenitorePadre.innerHTML = layoutCreato;
     caroselloImgTop();
+    caroselloImgBottom();
 }
 
 //funzione per carosello img top
-// arrayUrl.forEach(caroselloImgTop);
+
 // arrayTitle.forEach(caroselloImgTop);
 // arrayDescription.forEach(caroselloImgTop);
 function caroselloImgTop(){
@@ -169,48 +170,45 @@ function caroselloImgTop(){
 
 //funzione per creare carosello in img bottom
 function caroselloImgBottom(){
-    let slider2 = 0;
+    let slider = 0;
+    const minore = 1;
+    const maggiore = 3;
     const cards = document.querySelectorAll('.img-carosello');
-    cards[slider2].classList.toggle('img-opaca');
-    const frecciaSinistra = document.querySelector('.container-icon-left');
-    frecciaSinistra.addEventListener('click', sinistra);
-
-        function sinistra(){
-        if(cards[slider2] < 0){
-            cards[slider2].classList.toggle('img-opaca');
-            slider2 += 4;
-            cards[slider2].classList.toggle('img-opaca');
-        } 
-        else{
-            cards[slider2].classList.toggle('img-opaca');
-            slider2--;
-            cards[slider2].classList.toggle('img-opaca');
+    cards[slider].classList.toggle('img-opaca');
+    const btnDestra = document.querySelector('.container-icon-right');
+    btnDestra.addEventListener('click', scorriDestra);
+    function scorriDestra(){
+       
+        if(slider > maggiore){
+            cards[slider].classList.toggle('img-opaca');
+                 slider -=4;
+            cards[slider].classList.toggle('img-opaca');
+        } else{
+            cards[slider].classList.toggle('img-opaca');
+                slider ++;
+             cards[slider].classList.toggle('img-opaca');
         }
-        console.log('clicco indietro' + cards[slider2])
+        console.log('click a destra')
     }
-    const frecciaDestra = document.querySelector('.container-icon-right');
-    frecciaDestra.addEventListener('click', destra);
 
-        function destra(){
-        if(cards[slider2] < 5){
-            cards[slider2].classList.toggle('img-opaca');
-            slider2++;
-            cards[slider2].classList.toggle('img-opaca');
-        } 
-        else{
-            cards[slider2].classList.toggle('img-opaca');
-            slider2 -= 4;
-            cards[slider2].classList.toggle('img-opaca');
+    const btnSinistra = document.querySelector('.container-icon-left');
+    btnSinistra.addEventListener('click', scorriSinistra);
+    function scorriSinistra(){
+      
+        if(slider < minore){
+            cards[slider].classList.toggle('img-opaca');
+                slider +=4;
+            cards[slider].classList.toggle('img-opaca');
+        } else{
+            cards[slider].classList.toggle('img-opaca');
+                slider --;
+            cards[slider].classList.toggle('img-opaca');
         }
-        console.log('clicco avanti' + cards[slider2])
+        console.log('click a sinistra')
     }
+
 }
-
-
-
-
 
 // RICHIAMO FUNZIONI
 
 creaLayout();
-caroselloImgBottom();
