@@ -124,6 +124,7 @@ function creaLayout(){
 //arrayUrl.forEach(caroselloImgTop);
 // arrayTitle.forEach(caroselloImgTop);
 // arrayDescription.forEach(caroselloImgTop);
+
 function caroselloImgTop(){
      let slider = 0;
     const immagini = document.querySelectorAll('.img-corrente');
@@ -157,9 +158,6 @@ function caroselloImgTop(){
 
     const intervallo = setInterval(cicloTop, 3000);
 
-
-
-
 // funzione al bottone per fermare lo scorrimento automatico img top
     const btnInterrompi = document.getElementById('btn-interrompi-scorrimento');
     btnInterrompi.addEventListener('click', function(){
@@ -192,7 +190,6 @@ function caroselloImgTop(){
         setInterval(cicloInverso, 3000);
      
     }
-    
     //-------------------------------------------------------------------------------------------------------------------
 }
 
@@ -206,7 +203,8 @@ function caroselloImgBottom(){
     const btnDestra = document.querySelector('.container-icon-right');
     btnDestra.addEventListener('click', scorriDestra);
     function scorriDestra(){
-        //cicloTop();
+        
+ 
         if(slider > maggiore){
             cards[slider].classList.toggle('img-opaca');
                  slider -=4;
@@ -217,6 +215,7 @@ function caroselloImgBottom(){
              cards[slider].classList.toggle('img-opaca');
         }
         //console.log('click a destra')
+       
     }
 
     const btnSinistra = document.querySelector('.container-icon-left');
@@ -243,24 +242,35 @@ function caroselloImgBottom(){
         clearInterval(intervallo2);
         const intervalloInverso2 = setInterval(scorriSinistra, 3000);
     }
-
+    //-------------------------------------------------------------------------------------------------------------------
 
     // funzione al bottone per fermare lo scorrimento automatico del carosello img bottom
     const btnInterrompi = document.getElementById('btn-interrompi-scorrimento');
     btnInterrompi.addEventListener('click', function(){
     clearInterval(intervallo2);
-
     })
+    // btnInterrompi.addEventListener('click', function(){
+    //     const intervallo2 = setInterval(scorriDestra, 3000);
+    // })
     
 
     //funzione per selezionare img top tramite carosello bottom
-    //arrayUrl.forEach(selezionaCard);
-    //const cards = document.querySelectorAll('.img-carosello');
-//     function selezionaCard(){
-//         console.log(cards[slider])
-// //-------------------------------------------------------------------------------------------------------------------
-       
-//     }
+    // cards.forEach(selezionaCard);
+    // console.log(cards)
+    
+    // cards.addEventListener('click');
+    
+    // function selezionaCard(){
+
+    //   if (cards[slider] == arrayUrl[slider]){
+    //         immagini[slider].classList.toggle('d-none');
+    //         titoli[slider].classList.toggle('d-none');
+    //         testo[slider].classList.toggle('d-none');
+    //   }
+    // }
+
+    //-------------------------------------------------------------------------------------------------------------------
+
 
 
 }
