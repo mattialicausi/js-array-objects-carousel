@@ -117,12 +117,11 @@ function creaLayout(){
     `;
 
     contenitorePadre.innerHTML = layoutCreato;
-    caroselloImgTop();
-    caroselloImgBottom();
+
 }
 
 //funzione per carosello img top
-
+//arrayUrl.forEach(caroselloImgTop);
 // arrayTitle.forEach(caroselloImgTop);
 // arrayDescription.forEach(caroselloImgTop);
 function caroselloImgTop(){
@@ -137,7 +136,7 @@ function caroselloImgTop(){
 
     function cicloTop(){
         if(slider < 4){
-             immagini[slider].classList.toggle('d-none');
+            immagini[slider].classList.toggle('d-none');
             titoli[slider].classList.toggle('d-none');
             testo[slider].classList.toggle('d-none');
             slider++;
@@ -161,26 +160,23 @@ function caroselloImgTop(){
 
 
 
-// funzione al bottone per fermare lo scorrimento automatico
+// funzione al bottone per fermare lo scorrimento automatico img top
     const btnInterrompi = document.getElementById('btn-interrompi-scorrimento');
     btnInterrompi.addEventListener('click', function(){
     clearInterval(intervallo);
-    clearInterval(intervallo2);
-
     })
 
     //funzione al bottone inverti scorrimento
     const btnInverti = document.getElementById('btn-inverti-ordine');
     btnInverti.addEventListener('click', cicloInverso);
     function cicloInverso(){
-    console.log('click inverso');
-    clearInterval(intervallo);
-    
-        if(slider > 1){
-             immagini[slider].classList.toggle('d-none');
+        clearInterval(intervallo);
+
+        if(slider < 1){
+            immagini[slider].classList.toggle('d-none');
             titoli[slider].classList.toggle('d-none');
             testo[slider].classList.toggle('d-none');
-            slider--;
+                slider +=4;
             immagini[slider].classList.toggle('d-none');
             titoli[slider].classList.toggle('d-none');
             testo[slider].classList.toggle('d-none');
@@ -188,18 +184,19 @@ function caroselloImgTop(){
             immagini[slider].classList.toggle('d-none');
             titoli[slider].classList.toggle('d-none');
             testo[slider].classList.toggle('d-none');
-            slider += 4;
+                slider --;
             immagini[slider].classList.toggle('d-none');
             titoli[slider].classList.toggle('d-none');
             testo[slider].classList.toggle('d-none');
         }
+        setInterval(cicloInverso, 3000);
+     
     }
-      
-
-
+    
+    //-------------------------------------------------------------------------------------------------------------------
 }
 
-//funzione per creare carosello in img bottom
+//funzione per creare carosello con evento dei tasti in img bottom
 function caroselloImgBottom(){
     let slider = 0;
     const minore = 1;
@@ -209,7 +206,7 @@ function caroselloImgBottom(){
     const btnDestra = document.querySelector('.container-icon-right');
     btnDestra.addEventListener('click', scorriDestra);
     function scorriDestra(){
-       
+        //cicloTop();
         if(slider > maggiore){
             cards[slider].classList.toggle('img-opaca');
                  slider -=4;
@@ -239,15 +236,37 @@ function caroselloImgBottom(){
     }
     const intervallo2 = setInterval(scorriDestra, 3000);
 
-    // funzione al bottone per fermare lo scorrimento automatico
+//funzione per far inverire senso scorrimento di img bottom al click sul bottone
+    const btnInverti = document.getElementById('btn-inverti-ordine');
+    btnInverti.addEventListener('click', cicloInversoImgBottom); 
+    function cicloInversoImgBottom(){
+        clearInterval(intervallo2);
+        const intervalloInverso2 = setInterval(scorriSinistra, 3000);
+    }
+
+
+    // funzione al bottone per fermare lo scorrimento automatico del carosello img bottom
     const btnInterrompi = document.getElementById('btn-interrompi-scorrimento');
     btnInterrompi.addEventListener('click', function(){
     clearInterval(intervallo2);
 
     })
     
+
+    //funzione per selezionare img top tramite carosello bottom
+    //arrayUrl.forEach(selezionaCard);
+    //const cards = document.querySelectorAll('.img-carosello');
+//     function selezionaCard(){
+//         console.log(cards[slider])
+// //-------------------------------------------------------------------------------------------------------------------
+       
+//     }
+
+
 }
 
 // RICHIAMO FUNZIONI
 
 creaLayout();
+    caroselloImgTop();
+    caroselloImgBottom();
